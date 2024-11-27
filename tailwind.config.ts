@@ -18,6 +18,9 @@ export default {
       },
     },
     extend: {
+      borderWidth: {
+        '3': '3px',
+      },
       fontFamily: {
         mono: ["Space Mono", "monospace"],
       },
