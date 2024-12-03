@@ -3,32 +3,31 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 0%;
-  }
-
-  * {
-    @apply border-border;
-  }
-
   body {
-    @apply bg-[#F2F2F7] text-foreground font-sans antialiased;
+    @apply bg-background text-foreground antialiased;
   }
 }
 
 @layer components {
-  .ios-card {
-    @apply bg-white/80 backdrop-blur-ios border border-white/20 shadow-lg rounded-ios 
-           transition-all duration-200;
+  .glass-card {
+    @apply bg-card/70 backdrop-blur-xl border border-border rounded-2xl shadow-lg;
   }
 
-  .ios-button {
-    @apply bg-accent text-white font-semibold px-6 py-3 rounded-ios
-           transition-all duration-200 hover:bg-accent/90 active:scale-95;
+  .neon-border {
+    @apply border border-neon-blue/30 shadow-[0_0_15px_rgba(14,165,233,0.3)];
   }
 
-  .glass-effect {
-    @apply bg-white/60 backdrop-blur-ios border border-white/20 shadow-sm;
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-neon-blue via-neon-purple to-neon-pink animate-gradient;
+  }
+
+  .glass-input {
+    @apply bg-input/10 backdrop-blur-lg border border-border rounded-xl px-4 py-2 
+           focus:outline-none focus:ring-2 focus:ring-neon-blue/50 transition-all duration-200;
+  }
+
+  .neon-button {
+    @apply bg-neon-blue/10 text-neon-blue border border-neon-blue/30 rounded-xl px-6 py-3
+           hover:bg-neon-blue/20 active:scale-95 transition-all duration-200 animate-glow;
   }
 }

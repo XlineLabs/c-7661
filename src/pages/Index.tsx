@@ -9,15 +9,15 @@ import { motion } from "framer-motion";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-[#F2F2F7] p-4 md:p-8">
+    <div className="min-h-screen bg-background p-4 md:p-8">
       <motion.div 
-        className="container max-w-7xl mx-auto space-y-6"
+        className="container max-w-7xl mx-auto space-y-8"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
       >
         <motion.h1 
-          className="text-4xl font-bold text-black mb-8"
+          className="text-4xl font-bold gradient-text mb-8"
           initial={{ y: -20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.2 }}
@@ -27,7 +27,7 @@ const Index = () => {
         
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <motion.div 
-            className="lg:col-span-2 ios-card p-6"
+            className="lg:col-span-2 glass-card p-6"
             initial={{ x: -20, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ delay: 0.3 }}
@@ -35,6 +35,7 @@ const Index = () => {
             <WalletConnect />
           </motion.div>
           <motion.div
+            className="glass-card p-6"
             initial={{ x: 20, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ delay: 0.4 }}
@@ -53,16 +54,20 @@ const Index = () => {
             <AssetList />
           </div>
           <div className="space-y-6">
-            <Watchlist />
-            <PriceAlert symbol="BTC" currentPrice={50000} />
+            <div className="glass-card p-6">
+              <Watchlist />
+            </div>
+            <div className="glass-card p-6">
+              <PriceAlert symbol="BTC" currentPrice={50000} />
+            </div>
           </div>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <div className="lg:col-span-2">
+          <div className="lg:col-span-2 glass-card p-6">
             <TradingChatbot />
           </div>
-          <div className="space-y-6">
+          <div className="glass-card p-6">
             <NewsSection />
           </div>
         </div>

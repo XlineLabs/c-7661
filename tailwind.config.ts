@@ -18,34 +18,51 @@ export default {
       },
     },
     extend: {
-      fontFamily: {
-        sans: ["-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "sans-serif"],
-      },
       colors: {
-        accent: "#007AFF", // iOS blue
-        border: "rgba(0, 0, 0, 0.1)",
-        input: "rgba(0, 0, 0, 0.05)",
-        ring: "#007AFF",
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
-        primary: {
-          DEFAULT: "#007AFF",
+        background: "#000000",
+        foreground: "#FFFFFF",
+        card: {
+          DEFAULT: "rgba(23, 25, 35, 0.7)",
           foreground: "#FFFFFF",
         },
-        secondary: {
-          DEFAULT: "#FF3B30", // iOS red
-          foreground: "#FFFFFF",
+        neon: {
+          blue: "#0EA5E9",
+          purple: "#8B5CF6",
+          pink: "#EC4899",
         },
-        muted: {
-          DEFAULT: "rgba(0, 0, 0, 0.05)",
-          foreground: "rgba(0, 0, 0, 0.6)",
-        },
+        border: "rgba(255, 255, 255, 0.1)",
+        input: "rgba(255, 255, 255, 0.05)",
       },
       borderRadius: {
-        'ios': '10px',
+        'xl': '1rem',
+        '2xl': '1.5rem',
       },
       backdropBlur: {
-        'ios': '20px',
+        'xl': '20px',
+      },
+      animation: {
+        'gradient': 'gradient 8s linear infinite',
+        'glow': 'glow 2s ease-in-out infinite alternate',
+      },
+      keyframes: {
+        gradient: {
+          '0%, 100%': {
+            'background-size': '200% 200%',
+            'background-position': 'left center'
+          },
+          '50%': {
+            'background-size': '200% 200%',
+            'background-position': 'right center'
+          },
+        },
+        glow: {
+          '0%': {
+            'box-shadow': '0 0 5px rgba(14, 165, 233, 0.2), 0 0 20px rgba(14, 165, 233, 0.2)',
+          },
+          '100%': {
+            'box-shadow': '0 0 10px rgba(14, 165, 233, 0.4), 0 0 40px rgba(14, 165, 233, 0.4)',
+          },
+        },
       },
     },
   },
