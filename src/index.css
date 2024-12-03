@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -8,27 +6,29 @@
   :root {
     --background: 0 0% 100%;
     --foreground: 0 0% 0%;
-    --primary: 0 0% 0%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 60 100% 50%;
-    --secondary-foreground: 0 0% 0%;
-    --muted: 0 0% 90%;
-    --muted-foreground: 0 0% 40%;
-    --border: 0 0% 0%;
   }
 
   * {
-    @apply border-black;
+    @apply border-border;
   }
 
   body {
-    @apply bg-white text-black font-mono;
+    @apply bg-[#F2F2F7] text-foreground font-sans antialiased;
   }
 }
 
-.brutalist-box {
-  @apply border-3 border-black bg-white shadow-[4px_4px_0px_#000] 
-         transition-all duration-200 hover:translate-x-[-2px] hover:translate-y-[-2px] 
-         hover:shadow-[6px_6px_0px_#000] active:translate-x-[0px] active:translate-y-[0px] 
-         active:shadow-[2px_2px_0px_#000];
+@layer components {
+  .ios-card {
+    @apply bg-white/80 backdrop-blur-ios border border-white/20 shadow-lg rounded-ios 
+           transition-all duration-200;
+  }
+
+  .ios-button {
+    @apply bg-accent text-white font-semibold px-6 py-3 rounded-ios
+           transition-all duration-200 hover:bg-accent/90 active:scale-95;
+  }
+
+  .glass-effect {
+    @apply bg-white/60 backdrop-blur-ios border border-white/20 shadow-sm;
+  }
 }

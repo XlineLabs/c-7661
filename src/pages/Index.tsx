@@ -1,73 +1,69 @@
 import { AssetList } from "@/components/AssetList";
 import { WalletConnect } from "@/components/WalletConnect";
-import { MemeSignals } from "@/components/MemeSignals";
-import TradingChatbot from "@/components/TradingChatbot";
 import { Portfolio } from "@/components/Portfolio";
 import { PriceAlert } from "@/components/PriceAlert";
 import { NewsSection } from "@/components/NewsSection";
 import { Watchlist } from "@/components/Watchlist";
+import TradingChatbot from "@/components/TradingChatbot";
 import { motion } from "framer-motion";
 
 const Index = () => {
   return (
-    <div className="container py-8 space-y-8">
-      <motion.h1 
-        className="text-4xl font-bold mb-8"
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
+    <div className="min-h-screen bg-[#F2F2F7] p-4 md:p-8">
+      <motion.div 
+        className="container max-w-7xl mx-auto space-y-6"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
       >
-        Crypto Dashboard
-      </motion.h1>
-      
-      <motion.div 
-        className="grid grid-cols-1 lg:grid-cols-3 gap-6"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.2 }}
-      >
-        <div className="lg:col-span-2">
-          <WalletConnect />
+        <motion.h1 
+          className="text-4xl font-bold text-black mb-8"
+          initial={{ y: -20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.2 }}
+        >
+          Crypto Dashboard
+        </motion.h1>
+        
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <motion.div 
+            className="lg:col-span-2 ios-card p-6"
+            initial={{ x: -20, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ delay: 0.3 }}
+          >
+            <WalletConnect />
+          </motion.div>
+          <motion.div
+            initial={{ x: 20, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ delay: 0.4 }}
+          >
+            <Portfolio />
+          </motion.div>
         </div>
-        <div className="animate-fade-in">
-          <Portfolio />
-        </div>
-      </motion.div>
 
-      <motion.div 
-        className="grid grid-cols-1 lg:grid-cols-4 gap-6"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.4 }}
-      >
-        <div className="lg:col-span-3">
-          <AssetList />
-        </div>
-        <div className="space-y-6">
-          <div className="animate-slide-in">
+        <motion.div 
+          className="grid grid-cols-1 lg:grid-cols-4 gap-6"
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.5 }}
+        >
+          <div className="lg:col-span-3">
+            <AssetList />
+          </div>
+          <div className="space-y-6">
             <Watchlist />
-          </div>
-          <div className="animate-slide-in" style={{ animationDelay: "0.2s" }}>
-            <MemeSignals />
-          </div>
-        </div>
-      </motion.div>
-
-      <motion.div 
-        className="grid grid-cols-1 lg:grid-cols-3 gap-6"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.6 }}
-      >
-        <div className="lg:col-span-2">
-          <TradingChatbot />
-        </div>
-        <div className="space-y-6">
-          <div className="animate-fade-in">
-            <NewsSection />
-          </div>
-          <div className="animate-fade-in" style={{ animationDelay: "0.3s" }}>
             <PriceAlert symbol="BTC" currentPrice={50000} />
+          </div>
+        </motion.div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div className="lg:col-span-2">
+            <TradingChatbot />
+          </div>
+          <div className="space-y-6">
+            <NewsSection />
           </div>
         </div>
       </motion.div>

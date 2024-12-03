@@ -17,7 +17,7 @@ export const AssetList = () => {
         {[...Array(9)].map((_, i) => (
           <div
             key={i}
-            className="brutalist-box h-32 relative overflow-hidden bg-muted"
+            className="ios-card h-32 relative overflow-hidden"
           >
             <div className="absolute inset-0 -translate-x-full animate-shimmer bg-gradient-to-r from-transparent via-white/60 to-transparent" />
           </div>
@@ -37,17 +37,19 @@ export const AssetList = () => {
         >
           <Link
             to={`/asset/${asset.id}`}
-            className="brutalist-box p-4 block transform transition-all duration-200 hover:scale-105"
+            className="ios-card p-6 block hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
           >
             <div className="flex justify-between items-start mb-2">
               <div>
-                <h2 className="text-xl font-bold">{asset.name}</h2>
-                <p className="text-sm text-muted-foreground">{asset.symbol}</p>
+                <h2 className="text-xl font-semibold">{asset.name}</h2>
+                <p className="text-sm text-black/60">{asset.symbol}</p>
               </div>
-              <span className="text-sm bg-accent px-2 py-1 animate-bounce">#{asset.rank}</span>
+              <span className="text-sm bg-accent/10 text-accent px-3 py-1 rounded-full">
+                #{asset.rank}
+              </span>
             </div>
             <div className="mt-4">
-              <p className="text-2xl font-bold">
+              <p className="text-2xl font-semibold">
                 {formatCurrency(parseFloat(asset.priceUsd))}
               </p>
               <p
