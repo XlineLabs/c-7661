@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchTopAssets } from "@/services/api";
 import { Link } from "react-router-dom";
 import { formatCurrency } from "@/lib/utils";
+import { motion } from "framer-motion";
 
 export const AssetList = () => {
   const { data: assets, isLoading } = useQuery({
@@ -27,34 +28,40 @@ export const AssetList = () => {
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-      {assets?.map((asset) => (
-        <Link
+      {assets?.map((asset, index) => (
+        <motion.div
           key={asset.id}
-          to={`/asset/${asset.id}`}
-          className="brutalist-box p-4"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: index * 0.1 }}
         >
-          <div className="flex justify-between items-start mb-2">
-            <div>
-              <h2 className="text-xl font-bold">{asset.name}</h2>
-              <p className="text-sm text-muted-foreground">{asset.symbol}</p>
+          <Link
+            to={`/asset/${asset.id}`}
+            className="brutalist-box p-4 block transform transition-all duration-200 hover:scale-105"
+          >
+            <div className="flex justify-between items-start mb-2">
+              <div>
+                <h2 className="text-xl font-bold">{asset.name}</h2>
+                <p className="text-sm text-muted-foreground">{asset.symbol}</p>
+              </div>
+              <span className="text-sm bg-accent px-2 py-1 animate-bounce">#{asset.rank}</span>
             </div>
-            <span className="text-sm bg-accent px-2 py-1">#{asset.rank}</span>
-          </div>
-          <div className="mt-4">
-            <p className="text-2xl font-bold">
-              {formatCurrency(parseFloat(asset.priceUsd))}
-            </p>
-            <p
-              className={`text-sm ${
-                parseFloat(asset.changePercent24Hr) >= 0
-                  ? "text-green-600"
-                  : "text-red-600"
-              }`}
-            >
-              {parseFloat(asset.changePercent24Hr).toFixed(2)}%
-            </p>
-          </div>
-        </Link>
+            <div className="mt-4">
+              <p className="text-2xl font-bold">
+                {formatCurrency(parseFloat(asset.priceUsd))}
+              </p>
+              <p
+                className={`text-sm ${
+                  parseFloat(asset.changePercent24Hr) >= 0
+                    ? "text-green-600"
+                    : "text-red-600"
+                }`}
+              >
+                {parseFloat(asset.changePercent24Hr).toFixed(2)}%
+              </p>
+            </div>
+          </Link>
+        </motion.div>
       ))}
     </div>
   );
